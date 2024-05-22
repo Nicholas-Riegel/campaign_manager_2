@@ -42,10 +42,6 @@ function App() {
     setPage('home')
   }
 
-  const handlePageSelection = (page) => {
-    setPage(page)
-  }
-
   const handleUpdate = async (campaign) => {
     await campaignService.updateCampaign(campaign, campaign._id)
     await getAllCampaigns()
@@ -56,9 +52,9 @@ function App() {
     <>
       <Nav {...{selectPage}}/>
       <h1>Campaign Management System</h1>
-      {page === 'home' && <Home {...{campaignList, handleSelectCampaign}}/>}
+      {page === 'home' && <Home {...{campaignList, handleSelectCampaign, selectPage}}/>}
       {page === 'create' && <Create {...{handleCreate}}/>}
-      {page === 'show' && <Show {...{selectedCampaign, handleDelete, handlePageSelection}}/>}
+      {page === 'show' && <Show {...{selectedCampaign, handleDelete, selectPage}}/>}
       {page === 'edit' && <Update {...{handleUpdate, selectedCampaign}}/>}
     </>
   )
