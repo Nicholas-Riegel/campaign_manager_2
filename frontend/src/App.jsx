@@ -1,33 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react"
+import * as campaignService from './services/campaignService'
+import Nav from "./components/Nav/Nav"
+import Home from './components/Home/Home'
+import Create from './components/Create/Create'
+import Show from './components/Show/Show'
+import Update from "./components/Udate/Update"
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [campaignList, setCampaignList] = useState([])
+  const [page, setPage] = useState('home')
+  const [selectedCampaign, setSelectedCampaign] = useState({})
+
+  const getAllCampaigns = async () => {
+    const allCampaigns = await campaignService.index()
+    setCampaignList(allCampaigns)
+  }
+
+  useEffect(()=>{
+    getAllCampaigns()
+  }, [])
+
+  const selectPage = (page) => {
+    setPage(page)   
+  }
+
+  const handleCreate = async (campaign) => {
+    await campaignService.create(campaign)
+    getAllCampaigns()
+    setPage('home')
+  }
+
+  const handleSelectCampaign = (selection) => {
+    setSelectedCampaign(selection)
+    setPage('show')  
+  }
+
+  const handleDelete = async (campaignId) => {
+    await campaignService.deleteCampaign(campaignId)
+    await getAllCampaigns()
+    setPage('home')
+  }
+
+  const handleUpdate = async (campaign) => {
+    await campaignService.updateCampaign(campaign, campaign._id)
+    await getAllCampaigns()
+    setPage('home')
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Nav {...{selectPage}}/>
+      <h1>Campaign Management System</h1>
+      {page === 'home' && <Home {...{campaignList, handleSelectCampaign, selectPage}}/>}
+      {page === 'create' && <Create {...{handleCreate}}/>}
+      {page === 'show' && <Show {...{selectedCampaign, handleDelete, selectPage}}/>}
+      {page === 'edit' && <Update {...{handleUpdate, selectedCampaign}}/>}
     </>
   )
 }
