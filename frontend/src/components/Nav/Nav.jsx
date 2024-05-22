@@ -4,7 +4,7 @@ function Nav({selectPage}) {
     <>
         <ul>
             <li onClick={()=>selectPage('home')}>Home</li>
-            <li onClick={()=>selectPage('Create')}>Create</li>
+            <li onClick={()=>selectPage('create')}>Create</li>
         </ul>
     </>
   )
