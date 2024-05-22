@@ -1,7 +1,7 @@
 //routes/routes.js
 const express = require("express");
 const router = express.Router();
-const Campaign = require("../models/Campaign");
+const Campaign = require("../models/campaign.js");
 
 // @route   GET api/campaigns
 // @desc    Get All Campaigns
