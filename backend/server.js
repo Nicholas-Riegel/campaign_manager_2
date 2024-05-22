@@ -9,7 +9,6 @@ const app = express();
 
 // Bodyparser Middleware
 app.use(bodyParser.json());
-
 app.use(cors())
 
 // DB Config
