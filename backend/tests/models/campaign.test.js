@@ -1,6 +1,8 @@
 require('dotenv').config({ path: '.env.test' });
 const mongoose = require('mongoose');
 const Campaign = require('../../models/campaign');
+const Place = require('../../models/place');
+const Character = require('../../models/character');
 
 describe('Campaign Model Test', () => {
     beforeAll(async () => {
@@ -19,8 +21,8 @@ describe('Campaign Model Test', () => {
         const validCampaign = new Campaign({
             name: 'Test Campaign',
             system: 'D&D',
-            players: [],
             places: [],
+            characters: [],
         });
         const savedCampaign = await validCampaign.save();
         expect(savedCampaign._id).toBeDefined();

@@ -1,17 +1,18 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/campaigns`;
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api`;
 
-const index = async () => {
+// Campaign services
+const indexCampaigns = async () => {
 	try {
-		const res = await fetch(BASE_URL);
+		const res = await fetch(`${BASE_URL}/campaigns`);
 		return res.json();
 	} catch (err) {
 		console.log(err);
 	}
 };
 
-const create = async (campaign) => {
+const createCampaign = async (campaign) => {
 	try {
-		const res = await fetch(BASE_URL, {
+		const res = await fetch(`${BASE_URL}/campaigns`, {
 			method: 'POST',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify(campaign),
@@ -22,9 +23,9 @@ const create = async (campaign) => {
 	}
 };
 
-const updateCampaign = async (campaign, campainId) => {
+const updateCampaign = async (campaign, campaignId) => {
 	try {
-		const res = await fetch(`${BASE_URL}/${campainId}`, {
+		const res = await fetch(`${BASE_URL}/campaigns/${campaignId}`, {
 			method: 'PUT',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify(campaign),
@@ -35,15 +36,51 @@ const updateCampaign = async (campaign, campainId) => {
 	}
 };
 
-const deleteCampaign = async (campainId) => {
+const deleteCampaign = async (campaignId) => {
 	try {
-		const deletedPet = await fetch(`${BASE_URL}/${campainId}`, {
+		const res = await fetch(`${BASE_URL}/campaigns/${campaignId}`, {
 			method: 'DELETE',
 			headers: {'Content-Type': 'application/json'},
 		});
-		return deletedPet;
+		return res;
 	} catch (err) {
 		console.log(err);
 	}
-}
-export { index, create, updateCampaign, deleteCampaign};
+};
+
+// Place services
+const createPlace = async (place) => {
+	try {
+		const res = await fetch(`${BASE_URL}/places`, {
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify(place),
+		});
+		return res.json();
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+// Character services
+const createCharacter = async (character) => {
+	try {
+		const res = await fetch(`${BASE_URL}/characters`, {
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify(character),
+		});
+		return res.json();
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export {
+	indexCampaigns,
+	createCampaign,
+	updateCampaign,
+	deleteCampaign,
+	createPlace,
+	createCharacter
+};
