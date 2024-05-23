@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { React, useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import * as campaignService from './services/campaignService';
 import NavBar from "./components/NavBar/NavBar";
 import Home from './components/Home/Home';
@@ -11,6 +11,7 @@ import CreateCharacter from './components/CreateCharacter/CreateCharacter';
 import Campaigns from './components/Campaigns/Campaigns';
 import Characters from './components/Characters/Characters';
 import Places from './components/Places/Places';
+import Dice from './components/Dice/Dice';
 
 function App() {
   const [campaignList, setCampaignList] = useState([]);
@@ -60,8 +61,9 @@ function App() {
     }
   };
 
-  const handleEditCampaign = (campaign) => {
+  const handleEditCampaign = (navigate, campaign) => {
     setSelectedCampaign(campaign);
+    navigate('/edit'); // Navigate to edit page
   };
 
   const handleDeleteCampaign = async (campaignId) => {
@@ -73,10 +75,11 @@ function App() {
     }
   };
 
-  const handleUpdateCampaign = async (campaign) => {
+  const handleUpdateCampaign = async (navigate, campaign) => {
     try {
       await campaignService.updateCampaign(campaign, campaign._id);
       getAllCampaigns();
+      navigate('/campaigns'); // Navigate back to campaigns list after updating
     } catch (err) {
       console.log(err);
     }
@@ -88,20 +91,70 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/campaigns" element={<Campaigns campaignList={campaignList} handleSelectCampaign={setSelectedCampaign} handleCreate={handleCreateCampaign} handleEditCampaign={handleEditCampaign} handleDeleteCampaign={handleDeleteCampaign} characters={characters} places={places} />} />
+          <Route 
+            path="/campaigns" 
+            element={
+              <CampaignWrapper 
+                campaignList={campaignList} 
+                handleCreate={handleCreateCampaign} 
+                handleEditCampaign={handleEditCampaign} 
+                handleDeleteCampaign={handleDeleteCampaign} 
+                characters={characters} 
+                places={places} 
+              />
+            } 
+          />
           <Route path="/characters" element={<Characters characters={characters} />} />
           <Route path="/places" element={<Places places={places} />} />
-          <Route path="/dice" element={<div><h2>Dice</h2></div>} />
+          <Route path="/dice" element={<Dice />} />
           <Route path="/notes" element={<div><h2>Notes</h2></div>} />
           <Route path="/create" element={<CreateCampaign handleCreate={handleCreateCampaign} characters={characters} places={places} />} />
           <Route path="/createPlace" element={<CreatePlace />} />
           <Route path="/createCharacter" element={<CreateCharacter />} />
-          <Route path="/show" element={<Show selectedCampaign={selectedCampaign} handleDeleteCampaign={handleDeleteCampaign} />} />
-          <Route path="/edit" element={<Update handleUpdateCampaign={handleUpdateCampaign} selectedCampaign={selectedCampaign} />} />
+          <Route 
+            path="/show" 
+            element={
+              <Show 
+                selectedCampaign={selectedCampaign} 
+                handleDeleteCampaign={handleDeleteCampaign} 
+              />
+            } 
+          />
+          <Route 
+            path="/edit" 
+            element={
+              <UpdateWrapper 
+                handleUpdateCampaign={handleUpdateCampaign} 
+                selectedCampaign={selectedCampaign} 
+              />
+            } 
+          />
         </Routes>
       </div>
     </Router>
   );
 }
+
+const CampaignWrapper = (props) => {
+  const navigate = useNavigate();
+  
+  return (
+    <Campaigns 
+      {...props} 
+      handleEditCampaign={(campaign) => props.handleEditCampaign(navigate, campaign)} 
+    />
+  );
+};
+
+const UpdateWrapper = (props) => {
+  const navigate = useNavigate();
+
+  return (
+    <Update 
+      {...props} 
+      handleUpdateCampaign={(campaign) => props.handleUpdateCampaign(navigate, campaign)} 
+    />
+  );
+};
 
 export default App;
