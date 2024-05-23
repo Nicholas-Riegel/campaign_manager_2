@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function CreateCharacter({ handleCreateCharacter }) {
     const [character, setCharacter] = useState({

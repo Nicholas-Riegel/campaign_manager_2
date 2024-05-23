@@ -1,79 +1,106 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import * as campaignService from './services/campaignService';
-import Nav from "./components/Nav/Nav";
+import NavBar from "./components/NavBar/NavBar";
 import Home from './components/Home/Home';
-import Create from './components/Create/Create';
+import CreateCampaign from './components/CreateCampaign/CreateCampaign';
 import Show from './components/Show/Show';
 import Update from "./components/Update/Update";
-import CreatePlace from './components/CreatePlace/CreatePlace'; // Assuming these components exist
-import CreateCharacter from './components/CreateCharacter/CreateCharacter'; // Assuming these components exist
+import CreatePlace from './components/CreatePlace/CreatePlace';
+import CreateCharacter from './components/CreateCharacter/CreateCharacter';
+import Campaigns from './components/Campaigns/Campaigns';
+import Characters from './components/Characters/Characters';
+import Places from './components/Places/Places';
 
 function App() {
   const [campaignList, setCampaignList] = useState([]);
-  const [page, setPage] = useState('home');
-  const [selectedCampaign, setSelectedCampaign] = useState({});
-  const [places, setPlaces] = useState([]);
   const [characters, setCharacters] = useState([]);
+  const [places, setPlaces] = useState([]);
+  const [selectedCampaign, setSelectedCampaign] = useState({});
 
   const getAllCampaigns = async () => {
-    const allCampaigns = await campaignService.indexCampaigns();
-    setCampaignList(allCampaigns);
+    try {
+      const allCampaigns = await campaignService.indexCampaigns();
+      setCampaignList(allCampaigns);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getAllCharacters = async () => {
+    try {
+      const allCharacters = await campaignService.indexCharacters();
+      setCharacters(allCharacters);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getAllPlaces = async () => {
+    try {
+      const allPlaces = await campaignService.indexPlaces();
+      setPlaces(allPlaces);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
     getAllCampaigns();
+    getAllCharacters();
+    getAllPlaces();
   }, []);
 
-  const selectPage = (page) => {
-    setPage(page);
-  };
-
   const handleCreateCampaign = async (campaign) => {
-    await campaignService.createCampaign(campaign);
-    getAllCampaigns();
-    setPage('home');
+    try {
+      await campaignService.createCampaign(campaign);
+      getAllCampaigns();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  const handleCreatePlace = async (place) => {
-    await campaignService.createPlace(place);
-    setPlaces([...places, place]);
-    setPage('home');
-  };
-
-  const handleCreateCharacter = async (character) => {
-    await campaignService.createCharacter(character);
-    setCharacters([...characters, character]);
-    setPage('home');
-  };
-
-  const handleSelectCampaign = (selection) => {
-    setSelectedCampaign(selection);
-    setPage('show');
+  const handleEditCampaign = (campaign) => {
+    setSelectedCampaign(campaign);
   };
 
   const handleDeleteCampaign = async (campaignId) => {
-    await campaignService.deleteCampaign(campaignId);
-    await getAllCampaigns();
-    setPage('home');
+    try {
+      await campaignService.deleteCampaign(campaignId);
+      getAllCampaigns();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleUpdateCampaign = async (campaign) => {
-    await campaignService.updateCampaign(campaign, campaign._id);
-    await getAllCampaigns();
-    setPage('home');
+    try {
+      await campaignService.updateCampaign(campaign, campaign._id);
+      getAllCampaigns();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
-    <>
-      <Nav {...{ selectPage }} />
-      <h1>Campaign Management System</h1>
-      {page === 'home' && <Home {...{ campaignList, handleSelectCampaign, selectPage }} />}
-      {page === 'create' && <Create {...{ handleCreateCampaign }} />}
-      {page === 'createPlace' && <CreatePlace {...{ handleCreatePlace }} />}
-      {page === 'createCharacter' && <CreateCharacter {...{ handleCreateCharacter }} />}
-      {page === 'show' && <Show {...{ selectedCampaign, handleDeleteCampaign, selectPage }} />}
-      {page === 'edit' && <Update {...{ handleUpdateCampaign, selectedCampaign }} />}
-    </>
+    <Router>
+      <NavBar />
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/campaigns" element={<Campaigns campaignList={campaignList} handleSelectCampaign={setSelectedCampaign} handleCreate={handleCreateCampaign} handleEditCampaign={handleEditCampaign} handleDeleteCampaign={handleDeleteCampaign} characters={characters} places={places} />} />
+          <Route path="/characters" element={<Characters characters={characters} />} />
+          <Route path="/places" element={<Places places={places} />} />
+          <Route path="/dice" element={<div><h2>Dice</h2></div>} />
+          <Route path="/notes" element={<div><h2>Notes</h2></div>} />
+          <Route path="/create" element={<CreateCampaign handleCreate={handleCreateCampaign} characters={characters} places={places} />} />
+          <Route path="/createPlace" element={<CreatePlace />} />
+          <Route path="/createCharacter" element={<CreateCharacter />} />
+          <Route path="/show" element={<Show selectedCampaign={selectedCampaign} handleDeleteCampaign={handleDeleteCampaign} />} />
+          <Route path="/edit" element={<Update handleUpdateCampaign={handleUpdateCampaign} selectedCampaign={selectedCampaign} />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

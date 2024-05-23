@@ -1,15 +1,14 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose');
 
-const CharacterSchema = new Schema({
-    player: { type: String, required: true },
-    name: { type: String, required: true },
-    class: { type: String, required: true },
-    race: { type: String, required: true },
-    pronoun: { type: String, required: true },
-    level: { type: Number, required: true, default: 1 },
-    places: [{ type: Schema.Types.ObjectId, ref: 'Place' }],
-    campaigns: [{ type: Schema.Types.ObjectId, ref: 'Campaign' }]
+const characterSchema = new mongoose.Schema({
+  player: { type: String, required: true },
+  name: { type: String, required: true },
+  class: { type: String, required: true },
+  race: { type: String, required: true },
+  pronoun: { type: String, required: true },
+  level: { type: Number, required: true, default: 1 },
+  places: [{ type: mongoose.Schema.Types.ObjectId, ref: 'place' }],
+  campaigns: [{ type: mongoose.Schema.Types.ObjectId, ref: 'campaign' }]
 });
 
-module.exports = mongoose.model("Character", CharacterSchema);
+module.exports = mongoose.model('character', characterSchema);

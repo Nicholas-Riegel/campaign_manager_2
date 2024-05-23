@@ -1,11 +1,10 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose');
 
-const PlaceSchema = new Schema({
-    name: { type: String, required: true },
-    type: { type: String, required: true },
-    charactersPresent: [{ type: Schema.Types.ObjectId, ref: 'Character' }],
-    campaign: { type: Schema.Types.ObjectId, ref: 'Campaign' }
+const placeSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  type: { type: String, required: true },
+  charactersPresent: [{ type: mongoose.Schema.Types.ObjectId, ref: 'character' }],
+  campaign: { type: mongoose.Schema.Types.ObjectId, ref: 'campaign' }
 });
 
-module.exports = mongoose.model("Place", PlaceSchema);
+module.exports = mongoose.model('place', placeSchema);
