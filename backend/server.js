@@ -2,10 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require('cors');
-
 const campaigns = require("./routes/campaigns");
 const characters = require("./routes/characters");
 const places = require("./routes/places");
+const notes = require("./routes/notes");
 
 const app = express();
 
@@ -26,6 +26,7 @@ mongoose
 app.use("/api/campaigns", campaigns);
 app.use("/api/characters", characters);
 app.use("/api/places", places);
+app.use("/api/notes", notes);
 
 const port = process.env.PORT || 3000;
 

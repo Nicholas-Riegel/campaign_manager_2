@@ -12,6 +12,7 @@ import Campaigns from './components/Campaigns/Campaigns';
 import Characters from './components/Characters/Characters';
 import Places from './components/Places/Places';
 import Dice from './components/Dice/Dice';
+import Notes from './components/Notes/Notes';
 
 function App() {
   const [campaignList, setCampaignList] = useState([]);
@@ -107,7 +108,7 @@ function App() {
           <Route path="/characters" element={<Characters characters={characters} />} />
           <Route path="/places" element={<Places places={places} />} />
           <Route path="/dice" element={<Dice />} />
-          <Route path="/notes" element={<div><h2>Notes</h2></div>} />
+          <Route path="/notes" element={<Notes />} />
           <Route path="/create" element={<CreateCampaign handleCreate={handleCreateCampaign} characters={characters} places={places} />} />
           <Route path="/createPlace" element={<CreatePlace />} />
           <Route path="/createCharacter" element={<CreateCharacter />} />
