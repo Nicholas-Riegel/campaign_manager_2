@@ -1,19 +1,21 @@
-import { useState } from 'react'
+import {useState} from 'react'
+import {useParams} from 'react-router-dom'
 
-function Create({handleCreate}) {
+function CampaignUpdate({campaignsArray, handleUpdateCampaign}) {
 
-    const [campaign, setCampaign] = useState({
-        name: '',
-        system: ''
-    })
+    const params = useParams()
+    const selectedCampaign = campaignsArray.find(campaign => campaign._id === params.campaignId)
+    
+    const [campaign, setCampaign] = useState(selectedCampaign)
 
+    
     const handleChange = (e) => {
         setCampaign({...campaign, [e.target.name]: e.target.value})
     }
-
+    
     const handleSubmit = (e) => {
         e.preventDefault()
-        handleCreate(campaign)
+        handleUpdateCampaign(campaign)
         setCampaign({
             name: '',
             system: ''
@@ -30,17 +32,17 @@ function Create({handleCreate}) {
                     id='name'
                     onChange={handleChange}
                     value={campaign.name} />
-                <label htmlFor="system">Campaign Description:</label>
+                <label htmlFor="system">Campaign System:</label>
                 <input 
                     type="text"
                     name='system'
                     id='system'
                     onChange={handleChange}
                     value={campaign.system} />
-                <button type='submit'>Submit</button>
+                <button type='submit'>Update</button>
             </form>
         </>
     )
 }
 
-export default Create
+export default CampaignUpdate

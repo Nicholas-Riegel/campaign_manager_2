@@ -1,20 +1,26 @@
-import {useState} from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function Update({handleUpdate, selectedCampaign}) {
+function CampaignCreate({handleCreateCampaign}) {
 
-    const [campaign, setCampaign] = useState(selectedCampaign)
-    
+    const Navigate = useNavigate()
+
+    const initialState = {
+        name: '',
+        system: ''
+    }
+
+    const [campaign, setCampaign] = useState(initialState)
+
     const handleChange = (e) => {
         setCampaign({...campaign, [e.target.name]: e.target.value})
     }
-    
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        handleUpdate(campaign)
-        setCampaign({
-            name: '',
-            system: ''
-        })
+        handleCreateCampaign(campaign)
+        setCampaign(initialState)
+        Navigate('/campaigns')
     }
 
     return (
@@ -27,17 +33,17 @@ function Update({handleUpdate, selectedCampaign}) {
                     id='name'
                     onChange={handleChange}
                     value={campaign.name} />
-                <label htmlFor="system">Campaign System:</label>
+                <label htmlFor="system">Campaign Description:</label>
                 <input 
                     type="text"
                     name='system'
                     id='system'
                     onChange={handleChange}
                     value={campaign.system} />
-                <button type='submit'>Update</button>
+                <button type='submit'>Submit</button>
             </form>
         </>
     )
 }
 
-export default Update
+export default CampaignCreate

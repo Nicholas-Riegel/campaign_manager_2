@@ -1,61 +1,58 @@
 import { useState, useEffect } from "react"
+import { Route, Routes } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 import * as campaignService from './services/campaignService'
-import Nav from "./components/Nav/Nav"
-import Home from './components/Home/Home'
-import Create from './components/Create/Create'
-import Show from './components/Show/Show'
-import Update from "./components/Udate/Update"
+import NavBar from "./components/NavBar/NavBar"
+import HomePage from './components/Home/HomePage'
+import CampaignHome from './components/Campaigns/CampaignHome'
+import CampaignCreate from './components/Campaigns/CampaignCreate'
+import CampaignShow from './components/Campaigns/CampaignShow'
+import CampaignUpdate from "./components/Campaigns/CampaignUpdate"
 
 function App() {
 
-  const [campaignList, setCampaignList] = useState([])
-  const [page, setPage] = useState('home')
-  const [selectedCampaign, setSelectedCampaign] = useState({})
+  const Navigate = useNavigate()
+
+  const [campaignsArray, setCampaignsArray] = useState([])
 
   const getAllCampaigns = async () => {
     const allCampaigns = await campaignService.index()
-    setCampaignList(allCampaigns)
+    setCampaignsArray(allCampaigns)
   }
 
   useEffect(()=>{
     getAllCampaigns()
   }, [])
 
-  const selectPage = (page) => {
-    setPage(page)   
-  }
-
-  const handleCreate = async (campaign) => {
+  const handleCreateCampaign = async (campaign) => {
     await campaignService.create(campaign)
     getAllCampaigns()
-    setPage('home')
   }
 
-  const handleSelectCampaign = (selection) => {
-    setSelectedCampaign(selection)
-    setPage('show')  
-  }
-
-  const handleDelete = async (campaignId) => {
+  const handleDeleteCampaign = async (campaignId) => {
     await campaignService.deleteCampaign(campaignId)
     await getAllCampaigns()
-    setPage('home')
+    Navigate('/campaigns')
   }
 
-  const handleUpdate = async (campaign) => {
+  const handleUpdateCampaign = async (campaign) => {
     await campaignService.updateCampaign(campaign, campaign._id)
     await getAllCampaigns()
-    setPage('home')
+    Navigate('/campaigns')
   }
 
   return (
     <>
-      <Nav {...{selectPage}}/>
-      <h1>Campaign Management System</h1>
-      {page === 'home' && <Home {...{campaignList, handleSelectCampaign, selectPage}}/>}
-      {page === 'create' && <Create {...{handleCreate}}/>}
-      {page === 'show' && <Show {...{selectedCampaign, handleDelete, selectPage}}/>}
-      {page === 'edit' && <Update {...{handleUpdate, selectedCampaign}}/>}
+      <NavBar/>
+      <Routes>
+        <Route path='/' element={<HomePage/>}/>
+        
+        <Route path='/campaigns' element={<CampaignHome {...{campaignsArray}}/>}/>
+        <Route path='/campaign/new' element={<CampaignCreate {...{handleCreateCampaign}}/>}/>
+        <Route path='/campaign/:campaignId' element={<CampaignShow {...{campaignsArray, handleDeleteCampaign}}/>}/>
+        <Route path='/campaign/:campaignId/edit' element={<CampaignUpdate {...{campaignsArray, handleUpdateCampaign}}/>}/>
+
+      </Routes>
     </>
   )
 }
