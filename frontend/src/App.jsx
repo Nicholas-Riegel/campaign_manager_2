@@ -85,8 +85,8 @@ function App() {
 
         {/* CAMPAIGN ROUTES */}
         <Route path='/campaigns' element={<CampaignHome {...{campaignsArray}}/>}/>
-        <Route path='/campaign/new' element={<CampaignCreate {...{handleCreateCampaign}}/>}/>
-        <Route path='/campaign/:campaignId' element={<CampaignShow {...{campaignsArray, handleDeleteCampaign}}/>}/>
+        <Route path='/campaign/new' element={<CampaignCreate {...{ charactersArray, handleCreateCampaign}}/>}/>
+        <Route path='/campaign/:campaignId' element={<CampaignShow {...{campaignsArray, charactersArray, handleDeleteCampaign}}/>}/>
         <Route path='/campaign/:campaignId/edit' element={<CampaignUpdate {...{campaignsArray, handleUpdateCampaign}}/>}/>
         
         {/* CHARACTER ROUTES */}

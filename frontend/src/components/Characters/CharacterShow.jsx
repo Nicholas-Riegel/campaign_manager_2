@@ -11,7 +11,7 @@ function CampaignShow({charactersArray, campaignsArray, handleDeleteCharacter}) 
     return <p>Loading...</p>;
   }
 
-  const characterCampaigns = selectedCharacter.campaignIds.map(campaignId => campaignsArray.find(campaign => campaign._id === campaignId))
+  const characterCampaigns = campaignsArray.filter(campaign => selectedCharacter.campaignIds.includes(campaign._id))
   
   return (
     <>

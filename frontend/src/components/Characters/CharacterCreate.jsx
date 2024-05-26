@@ -1,11 +1,10 @@
-// Import necessary hooks from React and react-router-dom
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // Define the CharacterCreate component
 function CharacterCreate({handleCreateCharacter, campaignsArray}) {
 
-    // Use the navigate function from the react-router-dom library
+    // useNavigate to navigate back to the '/characters' route after form submission
     const Navigate = useNavigate()
 
     // Define the initial state for the character
@@ -14,10 +13,10 @@ function CharacterCreate({handleCreateCharacter, campaignsArray}) {
         campaignIds: []
     }
 
-    // Use React's useState hook to create a state variable for the character and a function to update it
+    // Create a state variable for the character
     const [character, setCharacter] = useState(initialState)
 
-    // Function to handle changes to the checkbox inputs
+    // Handle changes to the checkbox inputs
     const handleCheckboxChange = (event) => {
         
         // Get the campaign ID from the checkbox's value
@@ -27,11 +26,11 @@ function CharacterCreate({handleCreateCharacter, campaignsArray}) {
         
         // Update the character state
         setCharacter(prevCharacter => {
-            // If the checkbox is checked, add the campaign ID to the array
-            // If it's not checked, remove the campaign ID from the array
             const newCampaignIds = isChecked
-            ? [...prevCharacter.campaignIds, campaignId]
-            : prevCharacter.campaignIds.filter(id => id !== campaignId);
+                // If the checkbox is checked, add the campaign ID to the array
+                ? [...prevCharacter.campaignIds, campaignId]
+                // If it's not checked, remove the campaign ID from the array
+                : prevCharacter.campaignIds.filter(id => id !== campaignId);
             // Return the new character state
             return {
                 ...prevCharacter,
@@ -40,15 +39,15 @@ function CharacterCreate({handleCreateCharacter, campaignsArray}) {
         });
     };
 
-    // Function to handle changes to the other inputs
+    // Handle changes to the other inputs
     const handleChange = (e) => {
         // Update the character state with the new input value
         setCharacter(prevCharacter => ({...prevCharacter, [e.target.name]: e.target.value}));
     }
 
-    // Function to handle form submission
+    // Handle form submission
     const handleSubmit = (e) => {
-        // Prevent the default form submission behavior
+        // Prevent page refresh
         e.preventDefault()
         // Call the handleCreateCharacter function with the current character state
         handleCreateCharacter(character)
@@ -58,7 +57,6 @@ function CharacterCreate({handleCreateCharacter, campaignsArray}) {
         Navigate('/characters')
     }
 
-    // Render the form
     return (
         <>
             <form onSubmit={handleSubmit}>
@@ -93,5 +91,4 @@ function CharacterCreate({handleCreateCharacter, campaignsArray}) {
     )
 }
 
-// Export the CharacterCreate component
 export default CharacterCreate
