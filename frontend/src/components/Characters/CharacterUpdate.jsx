@@ -1,10 +1,9 @@
 import {useState, useEffect} from 'react'
-import {useParams, useNavigate} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 
 function CharacterUpdate({charactersArray, handleUpdateCharacter, campaignsArray}) {
     
     const params = useParams()
-    const navigate = useNavigate()
     const initialState = {
         name: '',
         campaignIds: []
@@ -47,7 +46,6 @@ function CharacterUpdate({charactersArray, handleUpdateCharacter, campaignsArray
     const handleSubmit = (e) => {
         e.preventDefault()
         handleUpdateCharacter(character)
-        // navigate(`/character/${params.characterId}`)
         setCharacter(initialState)
     }
     

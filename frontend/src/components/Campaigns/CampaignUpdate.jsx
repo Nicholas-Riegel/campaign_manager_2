@@ -1,10 +1,9 @@
 import {useState, useEffect} from 'react'
-import {useParams, useNavigate} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 
 function CampaignUpdate({campaignsArray, charactersArray, handleUpdateCampaign}) {
 
     const params = useParams()
-    const navigate = useNavigate()
     const initialState = {
         name: '',
         system: '',
@@ -46,7 +45,6 @@ function CampaignUpdate({campaignsArray, charactersArray, handleUpdateCampaign})
     const handleSubmit = (e) => {
         e.preventDefault()
         handleUpdateCampaign(campaign)
-        // navigate(`/campaign/${params.campaignId}`)
         setCampaign(initialState)
     }
 
