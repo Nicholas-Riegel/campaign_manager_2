@@ -15,8 +15,8 @@ function CharacterUpdate({charactersArray, handleUpdateCharacter, campaignsArray
 
     // this is necessary to handle the case where the user refreshes the page; otherwise sometimes they get blank screen becase 'character' is not set
     useEffect(() => {
-        const character = charactersArray.find(character => character._id === params.characterId);
-        setCharacter(character);
+        const selectedCharacter = charactersArray.find(character => character._id === params.characterId);
+        setCharacter(selectedCharacter);
     }, [charactersArray, campaignsArray, params.characterId]);
     
     // this is necessary to handle the case where the user refreshes the page; otherwise sometimes they get blank screen becase 'character' is not set
@@ -47,7 +47,8 @@ function CharacterUpdate({charactersArray, handleUpdateCharacter, campaignsArray
     const handleSubmit = (e) => {
         e.preventDefault()
         handleUpdateCharacter(character)
-        navigate('/characters')
+        // navigate(`/character/${params.characterId}`)
+        setCharacter(initialState)
     }
     
     return (

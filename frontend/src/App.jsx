@@ -43,7 +43,7 @@ function App() {
   const handleUpdateCampaign = async (campaign) => {
     await campaignService.updateCampaign(campaign, campaign._id)
     await getAllCampaigns()
-    Navigate('/campaigns')
+    Navigate(`/campaign/${campaign._id}`)
   }
   
   // CHARACTER FUNCTIONS
@@ -67,7 +67,7 @@ function App() {
   const handleUpdateCharacter = async (character) => {
     await characterService.updateCharacter(character, character._id)
     await getAllCharacters()
-    Navigate('/characters')
+    Navigate(`/character/${character._id}`)
   }
   
   useEffect(()=>{
@@ -87,7 +87,7 @@ function App() {
         <Route path='/campaigns' element={<CampaignHome {...{campaignsArray}}/>}/>
         <Route path='/campaign/new' element={<CampaignCreate {...{ charactersArray, handleCreateCampaign}}/>}/>
         <Route path='/campaign/:campaignId' element={<CampaignShow {...{campaignsArray, charactersArray, handleDeleteCampaign}}/>}/>
-        <Route path='/campaign/:campaignId/edit' element={<CampaignUpdate {...{campaignsArray, handleUpdateCampaign}}/>}/>
+        <Route path='/campaign/:campaignId/edit' element={<CampaignUpdate {...{campaignsArray, charactersArray, handleUpdateCampaign}}/>}/>
         
         {/* CHARACTER ROUTES */}
         <Route path='/characters' element={<CharacterHome {...{charactersArray}}/>}/>
