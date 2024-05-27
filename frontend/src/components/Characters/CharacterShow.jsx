@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom"
 
-function CampaignShow({charactersArray, campaignsArray, handleDeleteCharacter}) {
+function CampaignShow({charactersArray, handleDeleteCharacter}) {
 
   const Navigate = useNavigate()
   const params = useParams()
@@ -11,17 +11,11 @@ function CampaignShow({charactersArray, campaignsArray, handleDeleteCharacter}) 
     return <p>Loading...</p>;
   }
 
-  // const characterCampaigns = campaignsArray.filter(campaign => selectedCharacter.campaignIds.includes(campaign._id))
-  
   return (
     <>
       <h1>Character: {selectedCharacter.name}</h1>
-      {/* <h2>Campaigns:</h2>
-        <ul>
-        {characterCampaigns.map((campaign, i) => (
-          <li key={i}>{campaign.name}</li>
-        ))}
-        </ul> */}
+      <p>Class: {selectedCharacter.class}</p>
+      <p>Race: {selectedCharacter.race}</p>
       <button onClick={()=>handleDeleteCharacter(selectedCharacter._id)}>Delete</button>
       <button onClick={()=>Navigate(`/character/${selectedCharacter._id}/edit`)}>Edit</button>
     </>

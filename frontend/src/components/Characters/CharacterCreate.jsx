@@ -1,29 +1,13 @@
 import { useState } from 'react'
 
-function CharacterCreate({handleCreateCharacter, campaignsArray}) {
+function CharacterCreate({handleCreateCharacter}) {
 
     const initialState = {
         name: '',
-        campaignIds: []
+        description: ''
     }
 
     const [character, setCharacter] = useState(initialState)
-
-    const handleCheckboxChange = (event) => {
-        
-        const campaignId = event.target.value;
-        const isChecked = event.target.checked;
-        
-        setCharacter(prevCharacter => {
-            const newCampaignIds = isChecked
-                ? [...prevCharacter.campaignIds, campaignId]
-                : prevCharacter.campaignIds.filter(id => id !== campaignId);
-            return {
-                ...prevCharacter,
-                campaignIds: newCampaignIds
-            };
-        });
-    };
 
     const handleChange = (e) => {
         setCharacter(prevCharacter => ({...prevCharacter, [e.target.name]: e.target.value}));
@@ -46,22 +30,22 @@ function CharacterCreate({handleCreateCharacter, campaignsArray}) {
                     onChange={handleChange}
                     value={character.name} />
                 <br />
-                {/* <fieldset>
-                    <legend>Select Campaigns:</legend>
-                    {campaignsArray.map((campaign, i) => (
-                        <div key={i}>
-                        <label>
-                            <input 
-                                type="checkbox" 
-                                value={campaign._id}
-                                checked={character.campaignIds.includes(campaign._id)}
-                                onChange={handleCheckboxChange}/>
-                            {campaign.name}
-                        </label>
-                        </div>
-                    ))}
-                </fieldset>
-                <br /> */}
+                <label htmlFor="class">Character Class:</label>
+                <input 
+                    type="text"
+                    name='class'
+                    id='class'
+                    onChange={handleChange}
+                    value={character.class} />
+                <br />
+                <label htmlFor="race">Character Race:</label>
+                <input 
+                    type="text"
+                    name='race'
+                    id='race'
+                    onChange={handleChange}
+                    value={character.race} />
+                <br />
                 <button type='submit'>Submit</button>
             </form>
         </>
