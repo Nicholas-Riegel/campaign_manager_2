@@ -32,6 +32,7 @@ function App() {
   const handleCreateCampaign = async (campaign) => {
     await campaignService.create(campaign)
     getAllCampaigns()
+    Navigate('/campaigns')
   }
   
   const handleDeleteCampaign = async (campaignId) => {
@@ -55,7 +56,8 @@ function App() {
 
   const handleCreateCharacter = async (character) => {
     await characterService.create(character)
-    getAllCharacters()
+    await getAllCharacters()
+    Navigate('/characters')
   }
   
   const handleDeleteCharacter = async (characterId) => {

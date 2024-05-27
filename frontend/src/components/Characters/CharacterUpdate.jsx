@@ -60,7 +60,7 @@ function CharacterUpdate({charactersArray, handleUpdateCharacter, campaignsArray
                     onChange={handleChange}
                     value={character.name} />
                 <br />
-                <fieldset>
+                {/* <fieldset>
                     <legend>Select Campaigns:</legend>
                     {campaignsArray.map((campaign, i) => (
                         <div key={i}>
@@ -75,7 +75,7 @@ function CharacterUpdate({charactersArray, handleUpdateCharacter, campaignsArray
                         </div>
                     ))}
                     </fieldset>
-                <br />
+                <br /> */}
                 <button type='submit'>Update</button>
             </form>
         </>

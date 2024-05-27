@@ -1,9 +1,6 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 function CampaignCreate({handleCreateCampaign, charactersArray}) {
-
-    const Navigate = useNavigate()
 
     const initialState = {
         name: '',
@@ -37,7 +34,6 @@ function CampaignCreate({handleCreateCampaign, charactersArray}) {
         e.preventDefault()
         handleCreateCampaign(campaign)
         setCampaign(initialState)
-        Navigate('/campaigns')
     }
 
     return (

@@ -11,17 +11,17 @@ function CampaignShow({charactersArray, campaignsArray, handleDeleteCharacter}) 
     return <p>Loading...</p>;
   }
 
-  const characterCampaigns = campaignsArray.filter(campaign => selectedCharacter.campaignIds.includes(campaign._id))
+  // const characterCampaigns = campaignsArray.filter(campaign => selectedCharacter.campaignIds.includes(campaign._id))
   
   return (
     <>
       <h1>Character: {selectedCharacter.name}</h1>
-      <h2>Campaigns:</h2>
+      {/* <h2>Campaigns:</h2>
         <ul>
         {characterCampaigns.map((campaign, i) => (
           <li key={i}>{campaign.name}</li>
         ))}
-        </ul>
+        </ul> */}
       <button onClick={()=>handleDeleteCharacter(selectedCharacter._id)}>Delete</button>
       <button onClick={()=>Navigate(`/character/${selectedCharacter._id}/edit`)}>Edit</button>
     </>
