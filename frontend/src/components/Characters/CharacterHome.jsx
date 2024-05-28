@@ -8,7 +8,7 @@ function CharacterHome({charactersArray}) {
       <>
           <ul>
               {charactersArray.map((character, i)=>(
-                  <li key={i} onClick={()=>Navigate(`/character/${character._id}`)}>{character.name}</li>
+                  <li key={i} onClick={()=>Navigate(`/character/${character._id}`)}>{character.characterName}</li>
               ))}
           </ul>
           <button onClick={()=>Navigate('/character/new')}>Create New Character</button>

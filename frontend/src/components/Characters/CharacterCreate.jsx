@@ -3,8 +3,10 @@ import { useState } from 'react'
 function CharacterCreate({handleCreateCharacter}) {
 
     const initialState = {
-        name: '',
-        description: ''
+        characterName: '',
+        characterClass: '',
+        characterRace: '',
+        characterCampaigns: []
     }
 
     const [character, setCharacter] = useState(initialState)
@@ -22,29 +24,29 @@ function CharacterCreate({handleCreateCharacter}) {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Character Name:</label>
+                <label htmlFor="characterName">Character Name:</label>
                 <input 
                     type="text"
-                    name='name'
-                    id='name'
+                    name='characterName'
+                    id='characterName'
                     onChange={handleChange}
-                    value={character.name} />
+                    value={character.characterName} />
                 <br />
-                <label htmlFor="class">Character Class:</label>
+                <label htmlFor="characterClass">Character Class:</label>
                 <input 
                     type="text"
-                    name='class'
-                    id='class'
+                    name='characterClass'
+                    id='characterClass'
                     onChange={handleChange}
-                    value={character.class} />
+                    value={character.characterClass} />
                 <br />
-                <label htmlFor="race">Character Race:</label>
+                <label htmlFor="characterRace">Character Race:</label>
                 <input 
                     type="text"
-                    name='race'
-                    id='race'
+                    name='characterRace'
+                    id='characterRace'
                     onChange={handleChange}
-                    value={character.race} />
+                    value={character.characterRace} />
                 <br />
                 <button type='submit'>Submit</button>
             </form>

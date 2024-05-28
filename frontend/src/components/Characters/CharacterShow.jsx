@@ -13,9 +13,9 @@ function CampaignShow({charactersArray, handleDeleteCharacter}) {
 
   return (
     <>
-      <h1>Character: {selectedCharacter.name}</h1>
-      <p>Class: {selectedCharacter.class}</p>
-      <p>Race: {selectedCharacter.race}</p>
+      <h1>Character: {selectedCharacter.characterName}</h1>
+      <p>Class: {selectedCharacter.characterClass}</p>
+      <p>Race: {selectedCharacter.characterRace}</p>
       <button onClick={()=>handleDeleteCharacter(selectedCharacter._id)}>Delete</button>
       <button onClick={()=>Navigate(`/character/${selectedCharacter._id}/edit`)}>Edit</button>
     </>

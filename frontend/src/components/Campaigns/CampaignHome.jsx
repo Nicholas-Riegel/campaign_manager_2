@@ -8,7 +8,7 @@ function CampaignHome({campaignsArray}) {
       <>
           <ul>
               {campaignsArray.map((campaign, i)=>(
-                  <li key={i} onClick={()=>Navigate(`/campaign/${campaign._id}`)}>{campaign.name}</li>
+                  <li key={i} onClick={()=>Navigate(`/campaign/${campaign._id}`)}>{campaign.campaignName}</li>
               ))}
           </ul>
           <button onClick={()=>Navigate('/campaign/new')}>Create New Campaign</button>

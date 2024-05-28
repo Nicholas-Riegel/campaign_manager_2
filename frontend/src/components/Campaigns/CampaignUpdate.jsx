@@ -5,9 +5,9 @@ function CampaignUpdate({campaignsArray, charactersArray, handleUpdateCampaign})
 
     const params = useParams()
     const initialState = {
-        name: '',
-        system: '',
-        characterIds: []
+        campaignName: '',
+        campaignSystem: '',
+        campaignCharacters: []
     };
 
     const [campaign, setCampaign] = useState(initialState)
@@ -33,11 +33,11 @@ function CampaignUpdate({campaignsArray, charactersArray, handleUpdateCampaign})
         
         setCampaign(prevCampaign => {
             const newCharacterIds = isChecked
-                ? [...prevCampaign.characterIds, characterId]
-                : prevCampaign.characterIds.filter(id => id !== characterId);
+                ? [...prevCampaign.campaignCharacters, characterId]
+                : prevCampaign.campaignCharacters.filter(id => id !== characterId);
             return {
                 ...prevCampaign,
-                characterIds: newCharacterIds
+                campaignCharacters: newCharacterIds
             };
         });
     }
@@ -51,20 +51,20 @@ function CampaignUpdate({campaignsArray, charactersArray, handleUpdateCampaign})
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Campaign Name:</label>
+                <label htmlFor="campaignName">Campaign Name:</label>
                 <input 
                     type="text"
-                    name='name'
-                    id='name'
+                    name='campaignName'
+                    id='campaignName'
                     onChange={handleChange}
-                    value={campaign.name} />
-                <label htmlFor="system">Campaign System:</label>
+                    value={campaign.campaignName} />
+                <label htmlFor="campaignSystem">Campaign System:</label>
                 <input 
                     type="text"
-                    name='system'
-                    id='system'
+                    name='campaignSystem'
+                    id='campaignSystem'
                     onChange={handleChange}
-                    value={campaign.system} />
+                    value={campaign.campaignSystem} />
                 <br />
                 <fieldset>
                     <legend>Select Characters:</legend>
@@ -75,9 +75,9 @@ function CampaignUpdate({campaignsArray, charactersArray, handleUpdateCampaign})
                             <input 
                                 type="checkbox" 
                                 value={character._id}
-                                checked={campaign.characterIds.includes(character._id)}
+                                checked={campaign.campaignCharacters.includes(character._id)}
                                 onChange={handleCheckboxChange}/>
-                            {character.name}
+                            {character.characterName}
                         </label>
                         </div>
                     ))}

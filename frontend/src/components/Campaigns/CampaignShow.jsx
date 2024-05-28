@@ -11,16 +11,16 @@ function CampaignShow({campaignsArray, charactersArray, handleDeleteCampaign}) {
     return <p>Loading...</p>;
   }
 
-  const campaignCharacters = charactersArray.filter(character => selectedCampaign.characterIds.includes(character._id))
+  const campaignCharacters = charactersArray.filter(character => selectedCampaign.campaignCharacters.includes(character._id))
 
   return (
     <>
-      <h1>Campaign: {selectedCampaign.name}</h1>
-      <h2>System: {selectedCampaign.system}</h2>
+      <h1>Campaign: {selectedCampaign.campaignName}</h1>
+      <h2>System: {selectedCampaign.campaignSystem}</h2>
       <h2>Characters:</h2>
         <ul>
         {campaignCharacters.map((character, i) => (
-          <li key={i}>{character.name}</li>
+          <li key={i}>{character.characterName}</li>
         ))}
         </ul>
       <button onClick={()=>handleDeleteCampaign(selectedCampaign._id)}>Delete</button>
