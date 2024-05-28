@@ -1,5 +1,4 @@
-// src/models/Campaign.js
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const CampaignSchema = new mongoose.Schema({
     campaignName: { type: String, required: true },
