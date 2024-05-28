@@ -42,7 +42,7 @@ function CampaignCreate({handleCreateCampaign, charactersArray}) {
                 <label htmlFor="campaignName">Campaign Name:</label>
                 <input 
                     type="text"
-                    name='campaignNme'
+                    name='campaignName'
                     id='campaignName'
                     onChange={handleChange}
                     value={campaign.campaignName} />
