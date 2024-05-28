@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const CharacterSchema = new mongoose.Schema({
     characterName: { type: String, required: true },
@@ -7,6 +7,7 @@ const CharacterSchema = new mongoose.Schema({
     characterCampaign: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Campaign",
+        default: null,
     },
 });
 
