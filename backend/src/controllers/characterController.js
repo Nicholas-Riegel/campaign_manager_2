@@ -21,7 +21,9 @@ exports.createCharacter = async (req, res) => {
         campaignId,
     } = req.body;
     try {
+        console.log('Campaign ID:', campaignId); // Log the campaign ID
         const campaign = await Campaign.findById(campaignId);
+        console.log('Campaign:', campaign); // Log the found campaign
         if (!campaign)
             return res.status(404).json({ msg: "Campaign not found" });
 
@@ -32,16 +34,18 @@ exports.createCharacter = async (req, res) => {
             characterCampaign: campaignId,
         });
         const character = await newCharacter.save();
+        console.log('Created character:', character); // Log the created character
 
-        campaign.characters.push(character._id);
+        campaign.campaignCharacters.push(character._id);
         await campaign.save();
+        console.log('Updated campaign:', campaign); // Log the updated campaign
 
         res.json(character);
     } catch (err) {
+        console.error('Error creating character:', err); // Log the error
         res.status(500).send("Server Error");
     }
 };
-
 // Update a character
 exports.updateCharacter = async (req, res) => {
     const {
