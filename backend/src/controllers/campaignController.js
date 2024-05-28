@@ -14,9 +14,9 @@ exports.getCampaigns = async (req, res) => {
 
 // Create a campaign
 exports.createCampaign = async (req, res) => {
-    const { name, system } = req.body;
+    const { campaignName, campaignSystem } = req.body;
     try {
-        const newCampaign = new Campaign({ name, system });
+        const newCampaign = new Campaign({ campaignName, campaignSystem });
         const campaign = await newCampaign.save();
         res.json(campaign);
     } catch (err) {
@@ -26,15 +26,15 @@ exports.createCampaign = async (req, res) => {
 
 // Update a campaign
 exports.updateCampaign = async (req, res) => {
-    const { name, system, characters } = req.body;
+    const { campaignNameame, system, characters } = req.body;
     try {
         const campaign = await Campaign.findById(req.params.id);
         if (!campaign)
             return res.status(404).json({ msg: "Campaign not found" });
 
-        campaign.name = name || campaign.name;
-        campaign.system = system || campaign.system;
-        if (characters) campaign.characters = characters;
+        campaign.campaignName = name || campaign.campaignName;
+        campaign.campaignSystem = system || campaign.campaignSystem;
+        if (characters) campaign.campaignCharacters = characters;
 
         await campaign.save();
         res.json(campaign);
