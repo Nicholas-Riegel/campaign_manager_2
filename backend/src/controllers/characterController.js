@@ -14,17 +14,22 @@ exports.getCharacters = async (req, res) => {
 
 // Create a character
 exports.createCharacter = async (req, res) => {
-    const { name, class: charClass, race, campaignId } = req.body;
+    const {
+        characterName,
+        characterClass: charClass,
+        characterRace,
+        campaignId,
+    } = req.body;
     try {
         const campaign = await Campaign.findById(campaignId);
         if (!campaign)
             return res.status(404).json({ msg: "Campaign not found" });
 
         const newCharacter = new Character({
-            name,
-            class: charClass,
-            race,
-            campaign: campaignId,
+            characterName,
+            characterClass: charClass,
+            characterRace,
+            characterCampaign: campaignId,
         });
         const character = await newCharacter.save();
 
@@ -39,15 +44,25 @@ exports.createCharacter = async (req, res) => {
 
 // Update a character
 exports.updateCharacter = async (req, res) => {
-    const { name, class: charClass, race, campaignId } = req.body;
+    const {
+        characterName,
+        characterClass: charClass,
+        race,
+        campaignId,
+    } = req.body;
     try {
         const character = await Character.findById(req.params.id);
         if (!character)
             return res.status(404).json({ msg: "Character not found" });
 
-        if (campaignId && campaignId !== character.campaign.toString()) {
+        if (
+            campaignId &&
+            campaignId !== character.characterCampaign.toString()
+        ) {
             const newCampaign = await Campaign.findById(campaignId);
-            const oldCampaign = await Campaign.findById(character.campaign);
+            const oldCampaign = await Campaign.findById(
+                character.characterCampaign
+            );
             if (!newCampaign)
                 return res.status(404).json({ msg: "New campaign not found" });
 
@@ -60,9 +75,9 @@ exports.updateCharacter = async (req, res) => {
             character.campaign = campaignId;
         }
 
-        character.name = name || character.name;
-        character.class = charClass || character.class;
-        character.race = race || character.race;
+        character.characterName = characterName || character.characterName;
+        character.characterClass = charClass || character.characterClass;
+        character.characterRace = race || character.characterRace;
 
         await character.save();
         res.json(character);
