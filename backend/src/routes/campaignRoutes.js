@@ -1,4 +1,4 @@
-// src/routes/campaignRoutes.js
+// src/routes/CampaignRoutes.js
 const express = require("express");
 const router = express.Router();
 const campaignController = require("../controllers/campaignController");
