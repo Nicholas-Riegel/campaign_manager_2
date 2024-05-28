@@ -8,7 +8,7 @@ exports.getCampaigns = async (req, res) => {
         const campaigns = await Campaign.find().populate("campaignCharacters");
         res.json(campaigns);
     } catch (err) {
-        console.error('Error getting campaigns:', err); // Log the error
+        console.error("Error getting campaigns:", err); // Log the error
         res.status(500).send("Server Error");
     }
 };
@@ -25,6 +25,7 @@ exports.createCampaign = async (req, res) => {
     }
 };
 
+// Update a campaign
 exports.updateCampaign = async (req, res) => {
     const { campaignName, campaignSystem, campaignCharacters } = req.body;
     try {
@@ -34,7 +35,8 @@ exports.updateCampaign = async (req, res) => {
 
         campaign.campaignName = campaignName || campaign.campaignName;
         campaign.campaignSystem = campaignSystem || campaign.campaignSystem;
-        if (campaignCharacters) campaign.campaignCharacters = campaignCharacters;
+        if (campaignCharacters)
+            campaign.campaignCharacters = campaignCharacters;
 
         await campaign.save();
         res.json(campaign);
@@ -43,6 +45,7 @@ exports.updateCampaign = async (req, res) => {
     }
 };
 
+// Delete a campaign
 exports.deleteCampaign = async (req, res) => {
     try {
         const campaign = await Campaign.findById(req.params.id);
@@ -52,7 +55,23 @@ exports.deleteCampaign = async (req, res) => {
         await campaign.deleteOne();
         res.json({ msg: "Campaign removed" });
     } catch (err) {
-        console.error('Error deleting campaign:', err);
+        console.error("Error deleting campaign:", err);
+        res.status(500).send("Server Error");
+    }
+};
+
+// Get a single campaign by ID
+exports.getCampaignById = async (req, res) => {
+    try {
+        const campaign = await Campaign.findById(req.params.id).populate(
+            "campaignCharacters"
+        );
+        if (!campaign) {
+            return res.status(404).json({ msg: "Campaign not found" });
+        }
+        res.json(campaign);
+    } catch (err) {
+        console.error("Error getting campaign by ID:", err);
         res.status(500).send("Server Error");
     }
 };
