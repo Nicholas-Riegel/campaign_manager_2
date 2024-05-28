@@ -5,13 +5,14 @@ const Character = require("../models/Character");
 // Get all campaigns
 exports.getCampaigns = async (req, res) => {
     try {
-        const campaigns = await Campaign.find().populate("campaignCharacters");
+        const campaigns = await Campaign.find(); // Removed .populate("campaignCharacters")
         res.json(campaigns);
     } catch (err) {
         console.error("Error getting campaigns:", err); // Log the error
         res.status(500).send("Server Error");
     }
 };
+
 
 // Create a campaign
 exports.createCampaign = async (req, res) => {
@@ -63,9 +64,7 @@ exports.deleteCampaign = async (req, res) => {
 // Get a single campaign by ID
 exports.getCampaignById = async (req, res) => {
     try {
-        const campaign = await Campaign.findById(req.params.id).populate(
-            "campaignCharacters"
-        );
+        const campaign = await Campaign.findById(req.params.id); // Removed .populate("campaignCharacters")
         if (!campaign) {
             return res.status(404).json({ msg: "Campaign not found" });
         }
@@ -75,3 +74,4 @@ exports.getCampaignById = async (req, res) => {
         res.status(500).send("Server Error");
     }
 };
+
