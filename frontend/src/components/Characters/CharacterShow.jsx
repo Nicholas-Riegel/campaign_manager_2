@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
+import './CharacterShow.css'
 
 function CampaignShow({charactersArray, handleDeleteCharacter}) {
 
@@ -14,13 +15,15 @@ function CampaignShow({charactersArray, handleDeleteCharacter}) {
   }
 
   return (
-    <>
-      <h1>Character: {selectedCharacter.characterName}</h1>
-      <p>Class: {selectedCharacter.characterClass}</p>
-      <p>Race: {selectedCharacter.characterRace}</p>
-      <button onClick={()=>handleDeleteCharacter(selectedCharacter._id)}>Delete</button>
-      <button onClick={()=>Navigate(`/character/${selectedCharacter._id}/edit`)}>Edit</button>
-    </>
+    <div id="character-show-wrapper">
+      <div id="character-show-container">
+        <h1>Character: {selectedCharacter.characterName}</h1>
+        <p>Class: {selectedCharacter.characterClass}</p>
+        <p>Race: {selectedCharacter.characterRace}</p>
+        <button onClick={()=>handleDeleteCharacter(selectedCharacter._id)}>Delete</button>
+        <button onClick={()=>Navigate(`/character/${selectedCharacter._id}/edit`)}>Edit</button>
+      </div>
+    </div>
   )
 }
   
