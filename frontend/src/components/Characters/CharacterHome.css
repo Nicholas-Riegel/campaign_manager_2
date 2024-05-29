@@ -40,6 +40,11 @@
     border-radius: 5px;
 }
 
+#character-home-div li:hover{
+    font-weight: bold;
+    cursor: pointer;
+}
+
 #character-home-div button {
     width: 100%;
     margin: 10px 0;
