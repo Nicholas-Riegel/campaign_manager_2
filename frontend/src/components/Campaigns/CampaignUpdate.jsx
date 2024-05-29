@@ -12,6 +12,7 @@ function CampaignUpdate({campaignsArray, charactersArray, handleUpdateCampaign})
 
     const [campaign, setCampaign] = useState(initialState)
     
+    // This useEffect hook is used to set the campaign object when there are any changes to the campaignsArray or charactersArray or the campaignId in the URL. This is necessary to handle the case where the user refreshes the page; otherwise sometimes they get blank screen becase 'character' is not set.
     useEffect(() => {
         const selectedCampaign = campaignsArray.find(campaign => campaign._id === params.campaignId)
         setCampaign(selectedCampaign);
@@ -22,19 +23,26 @@ function CampaignUpdate({campaignsArray, charactersArray, handleUpdateCampaign})
         return <p>Loading...</p>;
     }
     
+    // handle changes to the input fields
     const handleChange = (e) => {
         setCampaign({...campaign, [e.target.name]: e.target.value})
     }
     
+    // This function is used to handle changes to the checkbox inputs
     const handleCheckboxChange = (event) => {
-            
+                    
+        // Extract the value and checked status from the event target (the checkbox input)
         const characterId = event.target.value;
         const isChecked = event.target.checked;
         
+        // Use the setCampaign function to update the state (chatGPT helped me get this function right. I modified some of the variables it used.)
         setCampaign(prevCampaign => {
             const newCharacterIds = isChecked
+                // If the checkbox is checked, add the character ID to the array
                 ? [...prevCampaign.campaignCharacters, characterId]
+                // If it's not checked, remove the character ID from the array
                 : prevCampaign.campaignCharacters.filter(id => id !== characterId);
+            // Return a new campaign object with the updated array
             return {
                 ...prevCampaign,
                 campaignCharacters: newCharacterIds

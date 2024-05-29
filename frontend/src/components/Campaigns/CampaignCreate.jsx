@@ -14,17 +14,23 @@ function CampaignCreate({handleCreateCampaign, charactersArray}) {
         setCampaign({...campaign, [e.target.name]: e.target.value})
     }
 
+    // This function is used to handle changes to the checkbox inputs
     const handleCheckboxChange = (event) => {
-            
+        
+        // Extract the value and checked status from the event target (the checkbox input)
         const characterId = event.target.value;
         const isChecked = event.target.checked;
         
-        setCampaign(prevCampaign => {
+        // Use the setCampaign function to update the state (chatGPT helped me get this function right)
+        setCampaign(prev => {
             const newCharacterIds = isChecked
-                ? [...prevCampaign.campaignCharacters, characterId]
-                : prevCampaign.campaignCharacters.filter(id => id !== characterId);
+                // If the checkbox is checked, add the character ID to the array
+                ? [...prev.campaignCharacters, characterId]
+                // If it's not checked, remove the character ID from the array
+                : prev.campaignCharacters.filter(id => id !== characterId);
+            // Return a new campaign object with the updated array
             return {
-                ...prevCampaign,
+                ...prev,
                 campaignCharacters: newCharacterIds
             };
         });

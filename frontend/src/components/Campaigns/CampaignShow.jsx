@@ -5,12 +5,15 @@ function CampaignShow({campaignsArray, charactersArray, handleDeleteCampaign}) {
   const Navigate = useNavigate()
   const params = useParams()
 
+  // Find the campaign that matches the id in the URL
   const selectedCampaign = campaignsArray.find(campaign => campaign._id === params.campaignId)
   
+  // If the campaign hasn't been found yet, return a loading message (super important because otherwise page will be blank on reload)
   if (!selectedCampaign) {
     return <p>Loading...</p>;
   }
 
+  // Filter the characters array to only include characters that are in the selected campaign
   const campaignCharacters = charactersArray.filter(character => selectedCampaign.campaignCharacters.includes(character._id))
 
   return (

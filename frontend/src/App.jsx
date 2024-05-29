@@ -1,11 +1,16 @@
+// Import css for all components
 import './App.css'
 
+// Import React tools
 import { useState, useEffect } from "react"
 import { Route, Routes } from "react-router-dom"
 import { useNavigate } from 'react-router-dom';
+
+// Import services
 import * as campaignService from './services/campaignService'
 import * as characterService from './services/characterService'
 
+// Import components
 import NavBar from "./components/NavBar/NavBar"
 import HomePage from './components/Home/HomePage'
 
@@ -76,6 +81,7 @@ function App() {
     Navigate(`/character/${character._id}`)
   }
   
+  // useEffect to get all campaigns and characters on page load
   useEffect(()=>{
     getAllCampaigns()
     getAllCharacters()

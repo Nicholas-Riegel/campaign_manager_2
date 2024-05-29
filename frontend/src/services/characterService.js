@@ -1,5 +1,7 @@
+// Base url: VITE_BACK_END_SERVER_URL in .env file
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/characters`;
 
+// Fetch all characters
 const index = async () => {
 	try {
 		const res = await fetch(BASE_URL);
@@ -9,6 +11,7 @@ const index = async () => {
 	}
 };
 
+// Create a new character
 const create = async (character) => {
 	try {
 		const res = await fetch(BASE_URL, {
@@ -22,6 +25,7 @@ const create = async (character) => {
 	}
 };
 
+// Update a character
 const updateCharacter = async (character, characterId) => {
 	try {
 		const res = await fetch(`${BASE_URL}/${characterId}`, {
@@ -35,6 +39,7 @@ const updateCharacter = async (character, characterId) => {
 	}
 };
 
+// Delete a character
 const deleteCharacter = async (characterId) => {
 	try {
 		const deletedPet = await fetch(`${BASE_URL}/${characterId}`, {
@@ -46,4 +51,6 @@ const deleteCharacter = async (characterId) => {
 		console.log(err);
 	}
 }
+
+// Export the functions
 export { index, create, updateCharacter, deleteCharacter};
