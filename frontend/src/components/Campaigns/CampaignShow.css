@@ -4,9 +4,19 @@
     align-items: center;
     justify-content: center;
     margin-top: 50px;
-}
-
-#campaign-show-div {
+  }
+  
+  #campaign-show-wrapper h1 {
+    font-size: 3rem;
+    margin: 1rem 0;
+    color: whitesmoke;
+    background-color: rgba(95, 95, 207, 0.539);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  #campaign-show-div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,9 +28,57 @@
     margin-bottom: 20px;
     color: whitesmoke;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#campaign-show-div h1,
-#campaign-show-div h2 {
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  }
+  
+  #campaign-show-div label,
+  #campaign-show-div p,
+  #campaign-show-div fieldset {
+    width: 100%;
     margin: 10px 0;
-}
+    padding: 10px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  }
+  
+  #campaign-show-div fieldset {
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px; /* Add margin-top to ensure proper spacing */
+  }
+  
+  #campaign-show-div ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #campaign-show-div ul li {
+    padding: 5px 0;
+  }
+  
+  .button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .button-group button {
+    width: 48%;
+    padding: 10px;
+    font-size: 1.5rem;
+    color: whitesmoke;
+    background-color: rgba(75, 75, 187, 0.539);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-group button:hover {
+    background-color: rgba(55, 55, 167, 0.539);
+  }
+  
