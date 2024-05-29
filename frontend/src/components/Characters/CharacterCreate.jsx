@@ -29,32 +29,26 @@ function CharacterCreate({handleCreateCharacter}) {
             <h1>Create a New Character</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="characterName">Character Name:</label>
-                <br />
                 <input 
                     type="text"
                     name='characterName'
                     id='characterName'
                     onChange={handleChange}
                     value={character.characterName} />
-                <br />
                 <label htmlFor="characterClass">Character Class:</label>
-                <br />
                 <input 
                     type="text"
                     name='characterClass'
                     id='characterClass'
                     onChange={handleChange}
                     value={character.characterClass} />
-                <br />
                 <label htmlFor="characterRace">Character Race:</label>
-                <br />
                 <input 
                     type="text"
                     name='characterRace'
                     id='characterRace'
                     onChange={handleChange}
                     value={character.characterRace} />
-                <br />
                 <button type='submit'>Submit</button>
             </form>
             </div>

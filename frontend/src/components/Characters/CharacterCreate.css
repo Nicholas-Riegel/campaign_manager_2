@@ -19,3 +19,32 @@
     color: whitesmoke;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+#character-create-div form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+
+#character-create-div input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+
+#character-create-div button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    background-color: rgba(95, 95, 207, 0.8);
+    color: whitesmoke;
+    cursor: pointer;
+}
