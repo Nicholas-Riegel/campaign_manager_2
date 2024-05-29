@@ -30,7 +30,6 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#create-campaign-wrapper form input,
 #create-campaign-wrapper form label,
 #create-campaign-wrapper form fieldset {
   width: 100%;
@@ -65,4 +64,12 @@
 
 .checkbox-label input {
   margin-right: 10px;
+}
+
+#checkbox-fieldset{
+  width: 100%;
+}
+
+#create-campaign-div form label{
+  font-size: 1.5rem;
 }

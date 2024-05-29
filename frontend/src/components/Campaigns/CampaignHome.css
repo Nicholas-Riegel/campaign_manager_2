@@ -40,3 +40,15 @@
 #campaign-home-wrapper ul li:hover {
     background-color: rgba(75, 75, 187, 0.539);
 }
+
+#campaign-home-wrapper button {
+    width: 500px;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    background-color: rgba(95, 95, 207, 0.539);
+    color: whitesmoke;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

@@ -4,85 +4,71 @@
     align-items: center;
     justify-content: center;
     margin-top: 50px;
-  }
-  
-  #campaign-show-wrapper h1 {
-    font-size: 3rem;
+}
+
+#campaign-show-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 500px;
+    margin-top: 50px;
+    background-color: rgba(95, 95, 207, 0.539);
+    border-radius: 10px;
+    color: whitesmoke;
+    padding: 20px 20px;
+}
+
+#campaign-show-container h1 {
     margin: 1rem 0;
     color: whitesmoke;
     background-color: rgba(95, 95, 207, 0.539);
     padding: 10px 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 3em;
-  }
-  
-  #campaign-show-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 500px;
-    background-color: rgba(95, 95, 207, 0.539);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    color: whitesmoke;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
-    font-size: 2em;
-  }
-  
-  #campaign-show-div label,
-  #campaign-show-div p,
-  #campaign-show-div fieldset {
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 1.5rem;
-    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
-  }
-  
-  #campaign-show-div fieldset {
-    border: 1px solid whitesmoke;
-    border-radius: 5px;
-    padding: 10px;
-    margin-top: 10px; /* Add margin-top to ensure proper spacing */
-    
-  }
-  
-  #campaign-show-div ul {
-    list-style-type: none;
+}
+
+#campaign-show-container ul {
+    list-style: none;
     padding: 0;
-    margin: 0;
-   
-  }
-  
-  #campaign-show-div ul li {
-    padding: 5px 0;
-  }
-  
-  .button-group {
+    width: 100%;
+}
+
+#campaign-show-container ul li {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
-    margin-top: 20px;
-  }
-  
-  .button-group button {
-    width: 48%;
+    align-items: center;
+    background-color: rgba(95, 95, 207, 0.539);
     padding: 10px;
-    font-size: 1.5rem;
+    margin: 10px 0;
+    width: 100%;
     color: whitesmoke;
-    background-color: rgba(75, 75, 187, 0.539);
-    border: none;
     border-radius: 5px;
+    font-size: 1.5em;
+}
+
+legend {
+    font-size: 1.5em;
+    color: whitesmoke;
+    background-color: rgba(95, 95, 207, 0.539);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+button {
+    background-color: rgba(95, 95, 207, 0.539);
+    color: whitesmoke;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    font-size: 1.5em;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button-group button:hover {
-    background-color: rgba(55, 55, 167, 0.539);
-  }
-  
+}

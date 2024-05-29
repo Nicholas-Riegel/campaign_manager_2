@@ -50,21 +50,21 @@ function CampaignCreate({handleCreateCampaign, charactersArray}) {
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="campaignName">Campaign Name:</label>
                     <input 
+                        className='text-input'
                         type="text"
                         name='campaignName'
                         id='campaignName'
                         onChange={handleChange}
                         value={campaign.campaignName} />
-                    <br />
                     <label htmlFor="campaignSystem">Campaign System:</label>
                     <input 
+                        className='text-input'
                         type="text"
                         name='campaignSystem'
                         id='campaignSystem'
                         onChange={handleChange}
                         value={campaign.campaignSystem} />
-                    <br />
-                    <fieldset>
+                    <fieldset id='checkbox-fieldset'>
                         <legend>Select Characters:</legend>
                         {/* Map over the charactersArray and render a checkbox for each campaign */}
                         {charactersArray.map((character, i) => (

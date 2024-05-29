@@ -19,3 +19,41 @@
     color: whitesmoke;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+#character-show-container h1 {
+    background-color: rgba(95, 95, 207, 0.539);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+#character-show-container p {
+    margin: 10px 0;
+    width: 100%;
+    font-size: 1.5rem;
+    background-color: rgba(95, 95, 207, 0.8);
+    border-radius: 5px;
+}
+
+#character-show-container button {
+    margin: 10px 0;
+    width: 100px;
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    background-color: rgba(95, 95, 207, 0.8);
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+#button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+#button-container button {
+    margin-left: 10px;
+}

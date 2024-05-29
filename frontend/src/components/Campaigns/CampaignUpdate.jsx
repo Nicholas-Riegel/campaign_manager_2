@@ -58,6 +58,7 @@ function CampaignUpdate({ campaignsArray, charactersArray, handleUpdateCampaign 
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="campaignName">Campaign Name:</label>
                     <input 
+                        className='text-input'
                         type="text"
                         name='campaignName'
                         id='campaignName'
@@ -65,22 +66,24 @@ function CampaignUpdate({ campaignsArray, charactersArray, handleUpdateCampaign 
                         value={campaign.campaignName} />
                     <label htmlFor="campaignSystem">Campaign System:</label>
                     <input 
+                        className='text-input'
                         type="text"
                         name='campaignSystem'
                         id='campaignSystem'
                         onChange={handleChange}
                         value={campaign.campaignSystem} />
-                    <fieldset>
+                    <fieldset className='checkbox-fieldset'>
                         <legend>Select Characters:</legend>
                         {charactersArray.map((character, i) => (
                             <div key={i} className="checkbox-container">
-                                <span className="character-name">{character.characterName}</span>
                                 <label className='checkbox-label'>
                                     <input 
+                                        className='checkbox-input'
                                         type="checkbox" 
                                         value={character._id}
                                         checked={campaign.campaignCharacters.includes(character._id)}
                                         onChange={handleCheckboxChange} />
+                                    {character.characterName}
                                 </label>
                             </div>
                         ))}
