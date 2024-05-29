@@ -6,11 +6,12 @@ function CharacterCreate({handleCreateCharacter}) {
         characterName: '',
         characterClass: '',
         characterRace: '',
-        characterCampaigns: []
+        characterCampaigns: [] // not used at the moment: for future implementation
     }
 
     const [character, setCharacter] = useState(initialState)
 
+    // handle changes to the input fields
     const handleChange = (e) => {
         setCharacter(prevCharacter => ({...prevCharacter, [e.target.name]: e.target.value}));
     }

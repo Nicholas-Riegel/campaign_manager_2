@@ -8,13 +8,13 @@ function CharacterUpdate({charactersArray, handleUpdateCharacter, campaignsArray
         characterName: '',
         characterClass: '',
         characterRace: '',
-        characterCampaigns: []
+        characterCampaigns: [] // not used at the moment: for future implementation
     };
     
     const [character, setCharacter] = useState(initialState)
     
 
-    // this is necessary to handle the case where the user refreshes the page; otherwise sometimes they get blank screen becase 'character' is not set
+    // This useEffect hook is used to set the character object when there are any changes to the campaignsArray or charactersArray or the campaignId in the URL. This is necessary to handle the case where the user refreshes the page; otherwise sometimes they get blank screen becase 'character' is not set.
     useEffect(() => {
         const selectedCharacter = charactersArray.find(character => character._id === params.characterId);
         setCharacter(selectedCharacter);
