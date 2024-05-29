@@ -6,15 +6,16 @@ require("dotenv").config(); // Load environment variables
 
 const app = express();
 
-// Connect to database
+// Connect to the database
 connectDB();
 
-// Middleware
+// Middleware to handle CORS and JSON requests
 app.use(cors());
 app.use(express.json({ extended: false }));
 
-// Routes
+// Define routes for campaigns and characters
 app.use("/api/campaigns", require("./routes/campaignRoutes"));
 app.use("/api/characters", require("./routes/characterRoutes"));
 
+// Export the app to be used in the server setup
 module.exports = app;
