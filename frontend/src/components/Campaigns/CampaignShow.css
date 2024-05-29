@@ -14,6 +14,7 @@
     padding: 10px 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 3em;
   }
   
   #campaign-show-div {
@@ -29,6 +30,7 @@
     color: whitesmoke;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    font-size: 2em;
   }
   
   #campaign-show-div label,
@@ -37,7 +39,7 @@
     width: 100%;
     margin: 10px 0;
     padding: 10px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
   }
   
@@ -46,12 +48,14 @@
     border-radius: 5px;
     padding: 10px;
     margin-top: 10px; /* Add margin-top to ensure proper spacing */
+    
   }
   
   #campaign-show-div ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+   
   }
   
   #campaign-show-div ul li {
