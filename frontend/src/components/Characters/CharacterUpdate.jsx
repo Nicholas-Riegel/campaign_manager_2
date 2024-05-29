@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
+import './CharacterUpdate.css'
 
 function CharacterUpdate({charactersArray, handleUpdateCharacter, campaignsArray}) {
     
@@ -36,9 +37,12 @@ function CharacterUpdate({charactersArray, handleUpdateCharacter, campaignsArray
     }
     
     return (
-        <>
+        <div id='character-update-wrapper'>
+            <div id="character-update-container">
+            <h1>Update Character</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="characterName">Character Name:</label>
+                <br />
                 <input 
                     type="text"
                     name='characterName'
@@ -47,6 +51,7 @@ function CharacterUpdate({charactersArray, handleUpdateCharacter, campaignsArray
                     value={character.characterName} />
                 <br />
                 <label htmlFor="characterClass">Character Class:</label>
+                <br />
                 <input 
                     type="text"
                     name='characterClass'
@@ -55,6 +60,7 @@ function CharacterUpdate({charactersArray, handleUpdateCharacter, campaignsArray
                     value={character.characterClass} />
                 <br />
                 <label htmlFor="characterRace">Character Race:</label>
+                <br />
                 <input 
                     type="text"
                     name='characterRace'
@@ -64,7 +70,8 @@ function CharacterUpdate({charactersArray, handleUpdateCharacter, campaignsArray
                 <br />
                 <button type='submit'>Update</button>
             </form>
-        </>
+            </div>
+        </div>
     )
 }
 
