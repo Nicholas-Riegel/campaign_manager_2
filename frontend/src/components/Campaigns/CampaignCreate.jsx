@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './CampaignCreate.css'
 
 function CampaignCreate({handleCreateCampaign, charactersArray}) {
 
@@ -43,44 +44,47 @@ function CampaignCreate({handleCreateCampaign, charactersArray}) {
     }
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="campaignName">Campaign Name:</label>
-                <input 
-                    type="text"
-                    name='campaignName'
-                    id='campaignName'
-                    onChange={handleChange}
-                    value={campaign.campaignName} />
-                <br />
-                <label htmlFor="campaignSystem">Campaign System:</label>
-                <input 
-                    type="text"
-                    name='campaignSystem'
-                    id='campaignSystem'
-                    onChange={handleChange}
-                    value={campaign.campaignSystem} />
-                <br />
-                <fieldset>
-                    <legend>Select Characters:</legend>
-                    {/* Map over the charactersArray and render a checkbox for each campaign */}
-                    {charactersArray.map((character, i) => (
-                        <div key={i}>
-                        <label>
-                            <input 
-                                type="checkbox" 
-                                value={character._id}
-                                checked={campaign.campaignCharacters.includes(character._id)}
-                                onChange={handleCheckboxChange}/>
-                            {character.characterName}
-                        </label>
-                        </div>
-                    ))}
-                </fieldset>
-                <br />
-                <button type='submit'>Submit</button>
-            </form>
-        </>
+        <div id='create-campaign-wrapper'>
+            <h1>Create a New Campaign</h1>
+            <div id='create-campaign-div'>
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="campaignName">Campaign Name:</label>
+                    <input 
+                        type="text"
+                        name='campaignName'
+                        id='campaignName'
+                        onChange={handleChange}
+                        value={campaign.campaignName} />
+                    <br />
+                    <label htmlFor="campaignSystem">Campaign System:</label>
+                    <input 
+                        type="text"
+                        name='campaignSystem'
+                        id='campaignSystem'
+                        onChange={handleChange}
+                        value={campaign.campaignSystem} />
+                    <br />
+                    <fieldset>
+                        <legend>Select Characters:</legend>
+                        {/* Map over the charactersArray and render a checkbox for each campaign */}
+                        {charactersArray.map((character, i) => (
+                            <div key={i} >
+                            <label className='checkbox-label'>
+                                <input 
+                                    type="checkbox" 
+                                    value={character._id}
+                                    checked={campaign.campaignCharacters.includes(character._id)}
+                                    onChange={handleCheckboxChange}/>
+                                {character.characterName}
+                            </label>
+                            </div>
+                        ))}
+                    </fieldset>
+                    <br />
+                    <button type='submit'>Submit</button>
+                </form>
+            </div>
+        </div>
     )
 }
 
