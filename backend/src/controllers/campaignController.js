@@ -17,15 +17,16 @@ exports.getCampaigns = async (req, res) => {
 
 // Create a campaign
 exports.createCampaign = async (req, res) => {
-    const { campaignName, campaignSystem } = req.body;
+    const { campaignName, campaignSystem, campaignCharacters } = req.body;
     try {
-        // Create a new campaign with the provided name and system
-        const newCampaign = new Campaign({ campaignName, campaignSystem });
+        // Create a new campaign with the provided name, system, and characters
+        const newCampaign = new Campaign({ campaignName, campaignSystem, campaignCharacters });
         const campaign = await newCampaign.save();
         // Send the created campaign as a response
         res.json(campaign);
     } catch (err) {
         // Send server error response if there's an issue
+        console.error("Error creating campaign:", err);
         res.status(500).send("Server Error");
     }
 };
@@ -50,6 +51,7 @@ exports.updateCampaign = async (req, res) => {
         res.json(campaign);
     } catch (err) {
         // Send server error response if there's an issue
+        console.error("Error updating campaign:", err);
         res.status(500).send("Server Error");
     }
 };
