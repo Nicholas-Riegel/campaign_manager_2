@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
+import './CampaignUpdate.css'
 
 function CampaignUpdate({campaignsArray, charactersArray, handleUpdateCampaign}) {
 
@@ -57,16 +58,21 @@ function CampaignUpdate({campaignsArray, charactersArray, handleUpdateCampaign})
     }
 
     return (
-        <>
+        <div id='campaign-update-wrapper'>
+            <div id="campaign-update-div">
+            <h1>Update Campaign</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="campaignName">Campaign Name:</label>
+                <br />
                 <input 
                     type="text"
                     name='campaignName'
                     id='campaignName'
                     onChange={handleChange}
                     value={campaign.campaignName} />
+                <br />
                 <label htmlFor="campaignSystem">Campaign System:</label>
+                <br />
                 <input 
                     type="text"
                     name='campaignSystem'
@@ -93,7 +99,8 @@ function CampaignUpdate({campaignsArray, charactersArray, handleUpdateCampaign})
                 <br />
                 <button type='submit'>Update</button>
             </form>
-        </>
+            </div>
+        </div>
     )
 }
 
