@@ -1,0 +1,20 @@
+#campaign-show-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+#campaign-show-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    background-color: rgba(95, 95, 207, 0.539);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: whitesmoke;
+}
