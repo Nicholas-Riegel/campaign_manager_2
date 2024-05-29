@@ -1,9 +1,9 @@
 #campaign-home-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
 }
 
 #campaign-home-wrapper h1 {
@@ -11,13 +11,17 @@
     margin: 1rem 0;
     color: whitesmoke;
     background-color: rgba(95, 95, 207, 0.539);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#campaign-home-wrapper ul{
+#campaign-home-wrapper ul {
     list-style: none;
+    padding: 0;
 }
 
-#campaign-home-wrapper ul li{
+#campaign-home-wrapper ul li {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -27,4 +31,11 @@
     margin: 10px 0;
     width: 500px;
     color: whitesmoke;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#campaign-home-wrapper ul li:hover {
+    background-color: rgba(75, 75, 187, 0.539);
 }
