@@ -1,0 +1,12 @@
+nav{
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background-color: rgb(95, 95, 207);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav h2{
+    color: whitesmoke;
+}
+
