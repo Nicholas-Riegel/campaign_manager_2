@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './CharacterCreate.css'
 
 function CharacterCreate({handleCreateCharacter}) {
 
@@ -23,9 +24,12 @@ function CharacterCreate({handleCreateCharacter}) {
     }
 
     return (
-        <>
+        <div id='character-create-wrapper'>
+            <div id="character-create-div">
+            <h1>Create a New Character</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="characterName">Character Name:</label>
+                <br />
                 <input 
                     type="text"
                     name='characterName'
@@ -34,6 +38,7 @@ function CharacterCreate({handleCreateCharacter}) {
                     value={character.characterName} />
                 <br />
                 <label htmlFor="characterClass">Character Class:</label>
+                <br />
                 <input 
                     type="text"
                     name='characterClass'
@@ -42,6 +47,7 @@ function CharacterCreate({handleCreateCharacter}) {
                     value={character.characterClass} />
                 <br />
                 <label htmlFor="characterRace">Character Race:</label>
+                <br />
                 <input 
                     type="text"
                     name='characterRace'
@@ -51,7 +57,8 @@ function CharacterCreate({handleCreateCharacter}) {
                 <br />
                 <button type='submit'>Submit</button>
             </form>
-        </>
+            </div>
+        </div>
     )
 }
 
