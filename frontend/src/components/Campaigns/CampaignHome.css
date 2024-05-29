@@ -1,0 +1,30 @@
+#campaign-home-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+#campaign-home-wrapper h1 {
+    font-size: 3rem;
+    margin: 1rem 0;
+    color: whitesmoke;
+    background-color: rgba(95, 95, 207, 0.539);
+}
+
+#campaign-home-wrapper ul{
+    list-style: none;
+}
+
+#campaign-home-wrapper ul li{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(95, 95, 207, 0.539);
+    padding: 10px;
+    margin: 10px 0;
+    width: 500px;
+    color: whitesmoke;
+}
