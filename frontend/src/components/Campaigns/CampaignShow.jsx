@@ -19,24 +19,19 @@ function CampaignShow({ campaignsArray, charactersArray, handleDeleteCampaign })
 
   return (
     <div id="campaign-show-wrapper">
-      <h1>Campaign: {selectedCampaign.campaignName}</h1>
-      <div id="campaign-show-div">
-        <form>
-          <label>System:</label>
-          <p>{selectedCampaign.campaignSystem}</p>
-          <fieldset>
-            <legend>Characters:</legend>
-            <ul>
-              {campaignCharacters.map((character, i) => (
-                <li key={i}>{character.characterName}</li>
-              ))}
-            </ul>
-          </fieldset>
-          <div className="button-group">
-            <button type="button" onClick={() => handleDeleteCampaign(selectedCampaign._id)}>Delete</button>
-            <button type="button" onClick={() => navigate(`/campaign/${selectedCampaign._id}/edit`)}>Edit</button>
-          </div>
-        </form>
+      <div id="campaign-show-container">
+        <h1>Campaign: {selectedCampaign.campaignName}</h1>
+        <h1>System: {selectedCampaign.campaignSystem}</h1>
+              <legend>Characters:</legend>
+              <ul>
+                {campaignCharacters.map((character, i) => (
+                  <li key={i}>{character.characterName}</li>
+                ))}
+              </ul>
+            <div className="button-group">
+              <button type="button" onClick={() => handleDeleteCampaign(selectedCampaign._id)}>Delete</button>
+              <button type="button" onClick={() => navigate(`/campaign/${selectedCampaign._id}/edit`)}>Edit</button>
+            </div>
       </div>
     </div>
   );
