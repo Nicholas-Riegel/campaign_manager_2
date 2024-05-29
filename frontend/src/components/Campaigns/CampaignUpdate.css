@@ -6,6 +6,16 @@
     margin-top: 50px;
 }
 
+#campaign-update-wrapper h1 {
+    font-size: 3rem;
+    margin: 1rem 0;
+    color: whitesmoke;
+    background-color: rgba(95, 95, 207, 0.539);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 #campaign-update-div {
     display: flex;
     flex-direction: column;
@@ -18,4 +28,63 @@
     margin-bottom: 20px;
     color: whitesmoke;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+#campaign-update-div label,
+#campaign-update-div input,
+#campaign-update-div fieldset {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+#campaign-update-div fieldset {
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.character-name {
+    flex: 1;
+    text-align: left;
+    font-size: 2em;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: start;
+    margin-left: 10px;
+    border: none; /* Remove the border from the label */
+    padding: 0;
+}
+
+.checkbox-label input {
+    margin-left: 0;
+}
+
+#campaign-update-div button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.5rem;
+    color: whitesmoke;
+    background-color: rgba(75, 75, 187, 0.539);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#campaign-update-div button:hover {
+    background-color: rgba(55, 55, 167, 0.539);
 }
