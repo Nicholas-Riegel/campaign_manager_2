@@ -11,34 +11,58 @@
   margin: 1rem 0;
   color: whitesmoke;
   background-color: rgba(95, 95, 207, 0.539);
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #create-campaign-wrapper form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(95, 95, 207, 0.539);
-    width: 500px;
-    padding: 20px;
-    font-size: 2rem;
-    color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(95, 95, 207, 0.539);
+  width: 500px;
+  padding: 20px;
+  font-size: 1.5rem;
+  color: whitesmoke;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#create-campaign-wrapper form input {
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 1.5rem;
+#create-campaign-wrapper form input,
+#create-campaign-wrapper form label,
+#create-campaign-wrapper form fieldset {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1rem;
 }
 
-.checkbox-label{
-    display: flex;
-    flex-direction: row;
-    margin: 10px 0;
-    font-size: 1rem;
+#create-campaign-wrapper form button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.5rem;
+  color: whitesmoke;
+  background-color: rgba(75, 75, 187, 0.539);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.checkbox-label input{
-    margin: 0px;
+#create-campaign-wrapper form button:hover {
+  background-color: rgba(55, 55, 167, 0.539);
+}
+
+.checkbox-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+.checkbox-label input {
+  margin-right: 10px;
 }
